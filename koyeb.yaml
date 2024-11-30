@@ -10,24 +10,24 @@ services:
       type: docker
       dockerfile: ./Dockerfile
     env:
-      - OWNERS=923092668108;❣️DASTAGEER
+      - OWNERS=94763038132;❣️𝐍𝐢𝐳𝐳𝖚 𝕴𝕯
       - MODE=public
-      - PREFIX=""
+      - PREFIX="."
       - antidelete=false
       - ANTI_LINK=false
       - AUTOREAD=false
       - VIEWONCE=false
       - STATUS_REPLY=false
       - STATUSLIKES=true
-      - STATUS_MSG="Your Status has been seen by Prince bot"
+      - STATUS_MSG="Your Status has been seen by 𝕹𝕴𝖅𝖅𝖀 𝕴𝕯"
       - BOT_NAME=PRINCE-MD
-      - PACK_NAME="Princebot🎗️❣️"
+      - PACK_NAME="𝕹𝕴𝖅𝖅𝖀 𝐈𝐃"
       - DL_MSG="_📥-------- *DOWNLOADED SUCCESSFULLY* --------📥_"
       - STATUSVIEW=false
       - Status_Saver=false
       - REJECTSCALLS=false
       - AutoReaction=false
-      - SESSION_ID="" # Add your session ID here
+      - SESSION_ID="Prince~E4wgUYpI#aRSNYIdH2w_RCSjAeFIxVIwff90FlXVmDVpUcuigbBI" # Add your session ID here
     regions:
       - fra
       - sin
