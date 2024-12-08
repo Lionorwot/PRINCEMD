@@ -46,6 +46,30 @@ throw false
 bot.pmblocker = isEnable
 break	  
 
+		  
+		  case 'testbb':
+	case 'testb':
+isAll = true
+if (!isROwner) {
+global.dfail('rowner', m, conn)
+throw false
+}
+bot.testbot = isEnable
+break	  
+
+
+case 'antipmspam':
+	case 'pmspam':
+		  case 'spampm':
+isAll = true
+if (!isROwner) {
+global.dfail('rowner', m, conn)
+throw false
+}
+bot.pmspam = isEnable
+break	  
+		  
+
 	  
  case 'autobio':
   isAll = true
@@ -139,16 +163,29 @@ break
       break
 
 		  
-    case 'antilink':
-    case 'antilinkwa':
-    case 'antilinkwha':
+    case 'testf':
+    case 'testfeature':
+    case 'tst':
       if (m.isGroup) {
         if (!(isAdmin || isOwner)) {
           global.dfail('admin', m, conn)
           throw false
         }
       }
-      chat.antiLink = isEnable
+      chat.testf = isEnable
+      break
+		  
+
+		  case 'nocmds':
+    case 'anticommands':
+    case 'blockcmds':
+      if (m.isGroup) {
+        if (!(isAdmin || isOwner)) {
+          global.dfail('admin', m, conn)
+          throw false
+        }
+      }
+      chat.anticmds = isEnable
       break
 
 
@@ -401,6 +438,9 @@ break
 ⚙️⛊ *${usedPrefix}pmblocker*
 > auto inbox blocker 
 
+⚙️⛊ *${usedPrefix}antipmspam*
+> auto virus sender blocker 
+
 ⚙️⛊ *${usedPrefix}onlydm*
 > bot will only work in inbox
 
@@ -436,6 +476,9 @@ break
 
 ⚙️⛊ *${usedPrefix}antispam*
 > bot will detect spammers 
+
+⚙️⛊ *${usedPrefix}nocmds*
+> bot will remove command users
 
 ⚙️⛊ *${usedPrefix}antilinkall*
 > bot will detect all links
