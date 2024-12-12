@@ -206,6 +206,7 @@ chatbot: false
             if (settings) {
                 if (!("self" in settings)) settings.self = false
                 if (!("autoread" in settings)) settings.autoread = false
+                if (!("autoread2" in settings)) settings.autoread2 = false
                 if (!("restrict" in settings)) settings.restrict = false
 	       // if (!('anticall' in settings)) settings.antiCall = false
                 if (!("restartDB" in settings)) settings.restartDB = 0
@@ -216,6 +217,7 @@ chatbot: false
             } else global.db.data.settings[this.user.jid] = {
                 self: false,
                 autoread: false,
+		    autoread2: false,
                 restrict: false,
 	   //     antiCall: false,
                 restartDB: 0,
@@ -554,27 +556,37 @@ if (!opts['noprint']) await (await import(`./lib/print.js`)).default(m, this)
 } catch (e) {
 console.log(m, m.quoted, e)}
 let settingsREAD = global.db.data.settings[this.user.jid] || {} 
-if (process.env.AUTOREAD === 'true') {
+if (opts['autoread']) await this.readMessages([m.key])
+if (settingsREAD.autoread2) await this.readMessages([m.key])  
+/*if (process.env.AUTOREAD === 'true') {
     try {
         await conn.readMessages([m.key]);
     } catch (error) {
     }
-}	    
+}*/	    
  // STATUSVIEW 
 //if (typeof process.env.STATUSVIEW !== 'undefined' && process.env.STATUSVIEW.toLowerCase() === 'true') { if (m.key.remoteJid === 'status@broadcast') { await conn.readMessages([m.key]); } }
 if (typeof process.env.STATUSVIEW !== 'undefined' && process.env.STATUSVIEW.toLowerCase() === 'true') { if (m.key.remoteJid === 'status@broadcast') { await conn.readMessages([m.key]); const prince = ['😀', '😃', '😄', '😁', '😊', '😇', '🙂', '🙃', '😍', '🥰', '😘', '😗', '😙', '😚', '😋', '🤑', '💌', '💘', '💝', '💖', '💗', '💓', '💞', '💕', '💟', '❣️', '💔', '❤️', '🧡', '💛', '💚', '💙', '💜', '🤎', '🖤', '🤍', '💯', '💥', '💫']; const randomEmoji = prince[Math.floor(Math.random() * prince.length)]; const msg = m; const me = await conn.decodeJid(conn.user.id); await conn.sendMessage(msg.key.remoteJid, { react: { key: msg.key, text: randomEmoji } }, { statusJidList: [msg.key.participant, me] }); } }
 
 
+let bot = global.db.data.settings[this.user.jid] || {};
+if (bot.autoreacts) {
+    if (!bot.autoreacts) return; // Check if autoreacts is off
 
-	    
-	    
-if (typeof process.env.AutoReaction === 'undefined' || process.env.AutoReaction.toLowerCase() === 'false') return;
-if (m.text.match(/(prince|a|e|i|o|u|g|q|ا|م|dad|gds|oso|love|mente|pero|tion|age|sweet|kiss|cute|ate|and|but|ify)/gi)) {
-    let emot = (m.sender === '923092668108@s.whatsapp.net') ? "👑" : pickRandom(["☺️", "😻", "🥰", "😱", "🤗", "🤫", "🤭", "☺️", "✨", "🎉", "💗", "♥️", "👑", "💞", "💖", "💓", "⚡️", "🌝", "🍓", "🍎", "🎈", "🪄", "❤️", "🧡", "💛", "💚", "💙", "💜", "🖤", "🤍", "💟", "🌝", "😎", "😍", "🕊️", "🥀", "🦋", "🐣", "❤‍🩹", "♥️", "😒", "🌸", "🌈", "❣️", "✨", "🙌", "👻", "🐤", "🪽", "🌙", "💫", "☀️", "🧸", "🎀", "🎉", "🩷", "🖤", "🤍", "🤎", "💛", "💚", "🩵", "💙", "💜", "💟", "💓", "🩶", "😑", "😶"]);
-    this.sendMessage(m.chat, { react: { text: emot, key: m.key } });
+    if (m.text.match(/(prince|a|e|i|o|u|g|q|ا|م|dad|gds|oso|love|mente|pero|tion|age|sweet|kiss|cute|ate|and|but|ify)/gi)) {
+        let emot = (m.sender === '923092668108@s.whatsapp.net') ? "👑" : pickRandom([
+            "☺️", "😻", "🥰", "😱", "🤗", "🤫", "🤭", "☺️", "✨", "🎉", "💗", "♥️", "👑", "💞", "💖", "💓", "⚡️", "🌝", "🍓", "🍎", 
+            "🎈", "🪄", "❤️", "🧡", "💛", "💚", "💙", "💜", "🖤", "🤍", "💟", "🌝", "😎", "😍", "🕊️", "🥀", "🦋", "🐣", "❤‍🩹", "♥️", 
+            "😒", "🌸", "🌈", "❣️", "✨", "🙌", "👻", "🐤", "🪽", "🌙", "💫", "☀️", "🧸", "🎀", "🎉", "🩷", "🖤", "🤍", "🤎", "💛", 
+            "💚", "🩵", "💙", "💜", "💟", "💓", "🩶", "😑", "😶"
+        ]);
+        this.sendMessage(m.chat, { react: { text: emot, key: m.key } });
+    }
 }
 
-function pickRandom(list) { return list[Math.floor(Math.random() * list.length)]; }
+function pickRandom(list) {
+    return list[Math.floor(Math.random() * list.length)];
+}
 
 
 

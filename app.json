@@ -11,7 +11,7 @@
   "image": "heroku/nodejs",
   "stack": "container",
   "env": {
-    "OWNERS": {
+    "OWNER_NUMBER": {
       "description": "put your Number as Owner",
       "required": true,
       "value": "923092668108;❣️DASTAGEER"
@@ -24,7 +24,7 @@
     "DATABASE_URL": {
       "description": "put mongodb or postgres or princedb database url for bots better performance",
       "required": false,
-      "value": "postgresql://princedb_owner:TdWP2hk4GMjZ@ep-weathered-cherry-a5pfqkjl.us-east-2.aws.neon.tech/princedb?sslmode=require"
+      "value": ""
     },
     "PREFIX": {
       "description": "put any one symbol here except @ and + , leave it Blank if you want to use multiple prefix",
@@ -40,21 +40,13 @@
       "description": "make true false to ON/OFF antilink",
       "required": false,
       "value": "false"
-    },
-    "AUTOREAD": {
-      "description": "make true to auto check users messages",
-      "required": false,
-      "value": "false"
+    
     },
     "AlwaysOnline": {
       "description": "make true to keep bot always online",
       "required": false,
       "value": "false"
-    },
-    "VIEWONCE": {
-      "description": "make true if wanna get view once message",
-      "required": false,
-      "value": "false"
+    
     },
     "STATUS_REPLY": {
       "description": "Status reply true false to on off",
@@ -88,16 +80,6 @@
     },
     "Status_Saver": {
       "description": "make it true to auto save your contacts status",
-      "required": false,
-      "value": "false"
-    },
-    "REJECTSCALLS": {
-      "description": "make it true to reject calls",
-      "required": false,
-      "value": "false"
-    },
-    "AutoReaction": {
-      "description": "make it true to react on chats",
       "required": false,
       "value": "false"
     },
